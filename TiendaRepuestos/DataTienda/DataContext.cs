@@ -17,13 +17,13 @@ namespace TiendaRepuestos.DataTienda
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer(@"Server=DESKTOP-C2JN085;DataBase=TiendaRepuestos;Trusted_Connection=True");
+            builder.UseSqlServer(@"Server=DESKTOP-1JU9H2N;DataBase=TiendaRepuestos;Trusted_Connection=True");
         }
 
-        public DbSet<TiendaRepuestos.Models.Inventario> Inventario { get; set; }
+        public DbSet<Inventario> Inventario { get; set; }
 
-        public DbSet<TiendaRepuestos.Models.Venta> Venta { get; set; }
+        public DbSet<Venta> Venta { get; set; }
 
-        public DbSet<TiendaRepuestos.Models.DetalleVenta> DetalleVenta { get; set; }
+        public DbSet<DetalleVenta> DetalleVenta { get; set; }
     }
 }

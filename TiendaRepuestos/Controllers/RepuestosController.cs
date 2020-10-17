@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,14 +26,14 @@ namespace TiendaRepuestos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Repuestos>>> Getrepuestos()
         {
-            return await _context.repuestos.Include(q => q.categoria).ToListAsync();
+            return await _context.repuestos.Include(q => q.categoria).OrderBy(x => x.Nombre).ToListAsync();
         }
 
         // GET: api/Repuestos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Repuestos>> GetRepuestos(int id)
         {
-            var repuestos = await _context.repuestos.FindAsync(id);
+            var repuestos = await _context.repuestos.Include(q => q.categoria).FirstOrDefaultAsync(x => x.id == id);
 
             if (repuestos == null)
             {
