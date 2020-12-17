@@ -25,14 +25,17 @@ namespace TiendaRepuestos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Inventario>>> GetInventario()
         {
-            return await _context.Inventario.ToListAsync();
+            var data = await _context.Inventario.Include(x => x.Repuesto).ToListAsync();
+            return data;
+
+            
         }
 
         // GET: api/Inventario/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Inventario>> GetInventario(int id)
         {
-            var inventario = await _context.Inventario.FindAsync(id);
+            var inventario = await _context.Inventario.Include(x => x.Repuesto).FirstOrDefaultAsync(x =>x.id == id);
 
             if (inventario == null)
             {

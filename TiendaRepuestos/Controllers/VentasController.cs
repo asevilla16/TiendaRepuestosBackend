@@ -25,7 +25,8 @@ namespace TiendaRepuestos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Venta>>> GetVenta()
         {
-            return await _context.Venta.ToListAsync();
+            var list = await _context.Venta.ToListAsync();
+            return list;
         }
 
         // GET: api/Ventas/5

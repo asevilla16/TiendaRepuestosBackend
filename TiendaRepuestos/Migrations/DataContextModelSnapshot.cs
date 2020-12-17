@@ -63,6 +63,51 @@ namespace TiendaRepuestos.Migrations
                     b.ToTable("clientes");
                 });
 
+            modelBuilder.Entity("TiendaRepuestos.Models.Compra", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idProveedor")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("idProveedor");
+
+                    b.ToTable("Compras");
+                });
+
+            modelBuilder.Entity("TiendaRepuestos.Models.DetalleCompra", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idCompra")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idRepuesto")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("idCompra");
+
+                    b.HasIndex("idRepuesto");
+
+                    b.ToTable("DetalleCompras");
+                });
+
             modelBuilder.Entity("TiendaRepuestos.Models.DetalleVenta", b =>
                 {
                     b.Property<int>("id")
@@ -106,6 +151,30 @@ namespace TiendaRepuestos.Migrations
                     b.HasIndex("idRepuesto");
 
                     b.ToTable("Inventario");
+                });
+
+            modelBuilder.Entity("TiendaRepuestos.Models.Proveedor", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Correo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Proveedores");
                 });
 
             modelBuilder.Entity("TiendaRepuestos.Models.RegistroIngreso", b =>
@@ -215,6 +284,30 @@ namespace TiendaRepuestos.Migrations
                     b.ToTable("Venta");
                 });
 
+            modelBuilder.Entity("TiendaRepuestos.Models.Compra", b =>
+                {
+                    b.HasOne("TiendaRepuestos.Models.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("idProveedor")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TiendaRepuestos.Models.DetalleCompra", b =>
+                {
+                    b.HasOne("TiendaRepuestos.Models.Compra", "Compra")
+                        .WithMany("DetallesCompra")
+                        .HasForeignKey("idCompra")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TiendaRepuestos.Models.Repuestos", "Repuesto")
+                        .WithMany()
+                        .HasForeignKey("idRepuesto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TiendaRepuestos.Models.DetalleVenta", b =>
                 {
                     b.HasOne("TiendaRepuestos.Models.Repuestos", "Repuesto")
@@ -224,7 +317,7 @@ namespace TiendaRepuestos.Migrations
                         .IsRequired();
 
                     b.HasOne("TiendaRepuestos.Models.Venta", "Venta")
-                        .WithMany()
+                        .WithMany("DetallesVenta")
                         .HasForeignKey("idVenta")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

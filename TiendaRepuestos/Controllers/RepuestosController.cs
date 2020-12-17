@@ -81,8 +81,23 @@ namespace TiendaRepuestos.Controllers
         [HttpPost]
         public async Task<ActionResult<Repuestos>> PostRepuestos(Repuestos repuestos)
         {
-            _context.repuestos.Add(repuestos);
-            await _context.SaveChangesAsync();
+            Repuestos rep = new Repuestos();
+            rep.Codigo = repuestos.Codigo;
+            rep.idCategoria = repuestos.idCategoria;
+            rep.Nombre = repuestos.Nombre;
+            rep.PrecioCompra = repuestos.PrecioCompra * -1;
+            rep.PrecioVenta = repuestos.PrecioVenta;
+
+            try
+            {
+                _context.repuestos.Add(rep);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
 
             return CreatedAtAction("GetRepuestos", new { id = repuestos.id }, repuestos);
         }

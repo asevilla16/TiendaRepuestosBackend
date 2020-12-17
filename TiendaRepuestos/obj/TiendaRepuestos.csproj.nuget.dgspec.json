@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Angel\\Source\\Repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj": {}
+    "C:\\Users\\Angel\\source\\repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Angel\\Source\\Repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj": {
+    "C:\\Users\\Angel\\source\\repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Angel\\Source\\Repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj",
+        "projectUniqueName": "C:\\Users\\Angel\\source\\repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj",
         "projectName": "TiendaRepuestos",
-        "projectPath": "C:\\Users\\Angel\\Source\\Repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj",
+        "projectPath": "C:\\Users\\Angel\\source\\repos\\TiendaRepuestosBackend\\TiendaRepuestos\\TiendaRepuestos.csproj",
         "packagesPath": "C:\\Users\\Angel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Angel\\Source\\Repos\\TiendaRepuestosBackend\\TiendaRepuestos\\obj\\",
+        "outputPath": "C:\\Users\\Angel\\source\\repos\\TiendaRepuestosBackend\\TiendaRepuestos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Angel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -62,7 +62,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[3.1.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

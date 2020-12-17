@@ -15,6 +15,5 @@ namespace TiendaRepuestos.Models
         public int idRepuesto { get; set; }
         [ForeignKey("idRepuesto")]
         public Repuestos Repuesto { get; set; }
-
     }
 }

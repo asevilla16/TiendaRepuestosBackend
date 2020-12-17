@@ -15,5 +15,6 @@ namespace TiendaRepuestos.Models
         public int idCliente { get; set; }
         [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
+        public List<DetalleVenta> DetallesVenta { get; set; }
     }
 }
